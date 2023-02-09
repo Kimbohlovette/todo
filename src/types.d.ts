@@ -1,6 +1,7 @@
 
-export interface Todo {
+export interface TodoType {
     id: number,
-    title: string,
+    title: string
     desc: string
+    completed: boolean
 }

@@ -1,10 +1,11 @@
-import React from 'react';
-import { Todo } from './features/todo/Todo';
+import React from "react";
+import { TodoList } from "./components/TodoList";
 
 function App() {
+
   return (
-    <div className="App">
-        <Todo />
+    <div className="p-8">
+        <TodoList />
     </div>
   );
 }
