@@ -1,8 +1,13 @@
 import React from "react";
 import { TodoList } from "./components/TodoList";
 import { AddTodoForm } from "./components/AddTodoForm";
+import { useAppDispatch } from "./app/hooks";
+import { fetchTodos } from "./features/todo/todoSlice";
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  dispatch(fetchTodos(dispatch));
 
   return (
     <div className="p-8 max-w-4xl">

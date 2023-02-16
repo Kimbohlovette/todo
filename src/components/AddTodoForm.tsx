@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
-import { todoActions } from "../features/todo/todoSlice";
+import {  addTodo } from "../features/todo/todoSlice";
 export const AddTodoForm = () =>{
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
@@ -10,10 +10,10 @@ export const AddTodoForm = () =>{
         const todo = {
             title:title,
             desc:desc,
-            id: 32,
+            id: "",
             completed: false
         };
-        dispatch(todoActions.addTodo(todo));
+        dispatch(addTodo(todo));
         setTitle("");
         setDesc("");
     };
