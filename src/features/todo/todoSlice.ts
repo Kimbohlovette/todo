@@ -8,6 +8,7 @@ import { AppDispatch } from "../../app/store";
 interface InitialState {
     status: string
     todos: TodoType[]
+    statusMge?: string
 }
 
 export const addTodo = createAsyncThunk(
@@ -18,10 +19,16 @@ export const addTodo = createAsyncThunk(
 export const fetchTodos = createAsyncThunk(
     "todo/fetchTodos",
    async (dispatch: AppDispatch)=>{
+
         const docsRef = collection(db, "todos");
         const docsSnapshot = await getDocs(docsRef);
+        console.log(docsSnapshot.size);
         console.log(docsSnapshot);
+        const newTodo: TodoType[] = [];
+
         docsSnapshot.forEach(doc=>{
+            console.log("doc",doc.data());
+            
             const data = doc.data();
             const todo = {
                 id: doc.id,
@@ -29,11 +36,15 @@ export const fetchTodos = createAsyncThunk(
                 desc: data["desc"],
                 completed: data["completed"]
             };
-            dispatch(todoActions.addTodo(todo));
+            newTodo.push(todo);
         });
+        dispatch(todoActions.overideTodo(newTodo));
+
+        console.log("done");
     }
 );
 
+console.log("Lovette");
 
 const initialState: InitialState ={
     status: "idle",
@@ -47,14 +58,24 @@ export const todoSlice = createSlice({
         addTodo: (state, action) =>{
             state.todos = [...state.todos, action.payload];
         },
+        overideTodo: (state, action) => {
+            state.todos = [...action.payload];
+        },
         clearTodos: (state)=> {state.todos = [];}
     },
     extraReducers: builder => {
         builder
-          .addCase(addTodo.pending, (state) => {
+        .addCase(addTodo.pending, (state) => {
             state.status = "loading";
           })
-          .addCase(addTodo.fulfilled, (state) => {state.status="idle";});
+          .addCase(addTodo.fulfilled, (state) => {
+            state.status = "idle";
+            state.statusMge += "Todo added successfully";
+          })
+          .addCase(addTodo.rejected, (state) => {
+            state.status = "failed";
+            state.statusMge = "An error occured while adding the todo! Try again later.";
+          });
       }
 });
 
