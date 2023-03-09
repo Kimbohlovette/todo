@@ -1,0 +1,17 @@
+[debug] [2023-03-09T10:01:34.413Z] ----------------------------------------------------------------------
+[debug] [2023-03-09T10:01:34.428Z] Command:       /usr/local/bin/node /home/lovette/.npm-global/bin/firebase use --add
+[debug] [2023-03-09T10:01:34.431Z] CLI Version:   11.22.0
+[debug] [2023-03-09T10:01:34.432Z] Platform:      linux
+[debug] [2023-03-09T10:01:34.433Z] Node Version:  v18.14.0
+[debug] [2023-03-09T10:01:34.435Z] Time:          Thu Mar 09 2023 11:01:34 GMT+0100 (West Africa Standard Time)
+[debug] [2023-03-09T10:01:34.437Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-09T10:01:34.457Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-03-09T10:01:34.659Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-09T10:01:34.661Z] > authorizing via signed-in user (lovdev619@gmail.com)
+[debug] [2023-03-09T10:01:39.687Z] Error: Timed out.
+    at Timeout._onTimeout (/home/lovette/.npm-global/lib/node_modules/firebase-tools/lib/utils.js:253:49)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+[error] 
+[error] Error: An unexpected error has occurred.
