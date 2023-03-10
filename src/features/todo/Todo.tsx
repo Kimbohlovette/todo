@@ -12,9 +12,9 @@ export function Todo(props: {todo: TodoType}) {
             <h1 className="text-slate-800 font-semibold">{props.todo.title}</h1>
             <p className="text-sm italic text-ellipsis">{props.todo.desc}</p>
             { !props.todo.completed ?
-                <span className="block text-slate-600 py- p-2 rounded-full bg-secondary-200 w-fit my-2">
+                <span className="block text-slate-600 p-1 rounded-full bg-secondary-200 w-fit my-2">
                     <BsClock />
-                    </span>
+                </span>
             :
                 <span className="block text-slate-600 py- p-1 rounded-full bg-green-500 w-fit my-2">
                     <MdFileDownloadDone className="text-white"/>

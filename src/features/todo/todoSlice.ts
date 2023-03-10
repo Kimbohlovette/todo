@@ -31,12 +31,8 @@ export const fetchTodos = createAsyncThunk(
 	async (dispatch: AppDispatch) => {
 		const docsRef = collection(db, "todos");
 		const docsSnapshot = await getDocs(docsRef);
-
 		const newTodos: TodoType[] = [];
-
 		docsSnapshot.forEach((doc) => {
-			console.log("doc", doc.data());
-
 			const data = doc.data();
 			const todo = {
 				id: doc.id,
@@ -48,12 +44,9 @@ export const fetchTodos = createAsyncThunk(
 			newTodos.push(todo);
 		});
 		dispatch(todoActions.overideTodo(newTodos));
-
-		console.log("done");
 	}
 );
 
-console.log("Lovette");
 
 const initialState: InitialState = {
 	status: "idle",
